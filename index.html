@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Barışalım mı?</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('https://i.imgur.com/mnTdukl.gif') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
+
+    #heart {
+      font-size: 100px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #heart:hover {
+      transform: scale(1.2);
+    }
+
+    #evomText {
+      font-size: 36px;
+      margin-top: 20px;
+      display: none;
+      animation: fadeIn 1s forwards;
+    }
+
+    #letter {
+      background: rgba(255, 255, 255, 0.9);
+      color: black;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 400px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      animation: fadeIn 1s forwards;
+    }
+
+    #letter p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #dc3545;
+      color: white;
+      position: absolute;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    #again {
+      display: none;
+      font-size: 18px;
+      margin-top: 15px;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="heart" onclick="showEvom()">❤️</div>
+    <div id="evomText">evom</div>
+
+    <div id="letter">
+      <p>Bu hoşuna gittiyse... barışıyoz 💌</p>
+      <div>
+        <button id="yesBtn" class="btn" onclick="alert('Ben de seni affettim 💖')">Evet</button>
+        <button id="noBtn" class="btn">Hayır</button>
+      </div>
+      <div id="again">Bir daha düşün 😔</div>
+    </div>
+  </div>
+
+  <script>
+    const heart = document.getElementById('heart');
+    const evomText = document.getElementById('evomText');
+    const letter = document.getElementById('letter');
+    const noBtn = document.getElementById('noBtn');
+    const again = document.getElementById('again');
+
+    function showEvom() {
+      evomText.style.display = 'block';
+      setTimeout(() => {
+        letter.style.display = 'flex';
+      }, 800);
+    }
+
+    function moveNoButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+      again.style.display = 'block';
+    }
+
+    noBtn.addEventListener('mouseover', moveNoButton);
+  </script>
+</body>
+</html>
